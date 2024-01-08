@@ -13,3 +13,30 @@ body {
   border-radius: 50%;
   object-fit: cover;
 }
+
+.css-jun1iy img {
+  width: 15px !important;
+  left: 20px !important;
+  top: 12px;
+}
+.sidebar-wrapper {
+  z-index: 1000;
+  position: fixed;
+  left: 275px;
+  width: 275px;
+  height: 100%;
+  margin-left: -275px;
+  overflow-y: auto;
+  background-color: #f6f6f6 !important;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-size: 12px;
+  font-family: "Inter-bold", "Inter", sans-serif !important;
+  .li.active a {
+    background-color: #004d72;
+
+    font-weight: 700;
+  }
+}
