@@ -4,7 +4,7 @@ import profileUser from "../assets/images/myNanceUser.png";
 const DasbhboardHeader = () => {
   return (
     <>
-      <div className="p-3 container-fluid">
+      <div className="p-3">
         <div className="d-flex align-items-center">
           <h2 className="col-6">Welcome !</h2>
           <div className="col-6 d-flex">

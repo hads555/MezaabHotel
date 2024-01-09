@@ -13,8 +13,8 @@ import settingIcon from "../assets/images/settingIcon.svg";
 import landingPageIcon from "../assets/images/landingPageIcon.svg";
 import logsIcon from "../assets/images/logsIcon.svg";
 import sheildCheckIcon from "../assets/images/shieldCheckIcon.svg";
+
 const DasbhboardSidebar = () => {
-  const themeColor = "#004D72";
   const sidebarItems = [
     { label: "Dashboard", img: dashboardIcon },
     { label: "Compilance Dashboard", img: dashboardIcon },
@@ -83,57 +83,48 @@ const DasbhboardSidebar = () => {
   ];
   const renderSubmenu = (item: any) => (
     <>
-      <SubMenu
-        prefix={<img src={item.img} style={{ background: "white" }} />}
-        key={item.label}
-        label={item.label}
-      >
-        {item.menu.map((submenuItem: any, subIndex: any) => (
-          <MenuItem key={subIndex}>{submenuItem.subMenu}</MenuItem>
-        ))}
-      </SubMenu>
+      <div className="menu-items">
+        <SubMenu
+          prefix={<img src={item.img} style={{ background: "none" }} />}
+          key={item.label}
+          label={item.label}
+        >
+          {item.menu.map((submenuItem: any, subIndex: any) => (
+            <MenuItem key={subIndex}>{submenuItem.subMenu}</MenuItem>
+          ))}
+        </SubMenu>
+      </div>
     </>
   );
   return (
     <>
-      <div className="container">
-        <Sidebar className="col-12 sidebar-wrapper fw-bold">
-          <div className="d-flex justify-content-center p-1 pt-4">
-            <img src={SideBarLogo} alt="" />
-          </div>
-          <Menu
-            menuItemStyles={{
-              button: {
-                [`&.active`]: {
-                  backgroundColor: themeColor,
-                  color: "#004D72",
-                },
-              },
-            }}
-          >
-            {sidebarItems.map((item, index) => (
-              <>
-                <React.Fragment key={index}>
-                  {item.menu ? (
-                    renderSubmenu(item)
-                  ) : (
-                    <div>
-                      {" "}
-                      <MenuItem
-                        prefix={
-                          <img src={item.img} style={{ background: "white" }} />
-                        }
-                      >
-                        {item.label}
-                      </MenuItem>
-                    </div>
-                  )}
-                </React.Fragment>
-              </>
-            ))}
-          </Menu>
-        </Sidebar>
-      </div>
+      <Sidebar className="col-12 sidebar-wrapper fw-bold">
+        <div className="d-flex justify-content-center p-1 pt-4">
+          <img src={SideBarLogo} alt="" />
+        </div>
+        <Menu>
+          {sidebarItems.map((item, index) => (
+            <>
+              <React.Fragment key={index}>
+                {item.menu ? (
+                  renderSubmenu(item)
+                ) : (
+                  <div className="menu-items">
+                    {" "}
+                    <MenuItem
+                      prefix={
+                        <img src={item.img} style={{ background: "none" }} />
+                      }
+                    >
+                      {item.label}
+                    </MenuItem>
+                  </div>
+                )}
+              </React.Fragment>
+            </>
+          ))}
+        </Menu>
+      </Sidebar>
     </>
   );
 };

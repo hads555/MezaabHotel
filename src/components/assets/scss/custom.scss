@@ -34,9 +34,31 @@ body {
   transition: all 0.3s ease;
   font-size: 12px;
   font-family: "Inter-bold", "Inter", sans-serif !important;
-  .li.active a {
-    background-color: #004d72;
-
-    font-weight: 700;
+}
+.menu-items > li a:hover {
+  background-color: #004d72 !important;
+  color: #f6f6f6;
+}
+.menu-items > li a:hover img {
+  filter: invert(1) brightness(1);
+}
+.container-fluid {
+  .side-bar {
+    padding: 0;
   }
+}
+.container-fluid.side-bar
+  .col-md-3
+  aside.ps-sidebar-root.col-12.sidebar-wrapper.fw-bold.css-1wvake5 {
+  width: 275px;
+  min-width: auto;
+}
+.container-fluid.side-bar .col-md-9 {
+  flex: 0 0 80%;
+  max-width: 80%;
+}
+
+.container-fluid.side-bar .col-md-3 {
+  flex: 0 0 20%;
+  max-width: 20%;
 }
