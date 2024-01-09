@@ -1,10 +1,10 @@
 import React from "react";
-import profileUser from "../assets/images/myNanceUser.png";
+import { Images } from "../Config/Images";
 
 const DasbhboardHeader = () => {
   return (
     <>
-      <div className="p-3">
+      <div className="container" style={{ backgroundColor: "#F6F6F6" }}>
         <div className="d-flex align-items-center">
           <h2 className="col-6">Welcome !</h2>
           <div className="col-6 d-flex">
@@ -12,8 +12,8 @@ const DasbhboardHeader = () => {
             <div className="d-flex col-6">
               <div className="col-7 d-flex justify-content-end align-items-center">
                 <img
-                  className=" profile-logo"
-                  src={profileUser}
+                  className="profile-logo"
+                  src={Images.profileUser}
                   alt=""
                   width={"50px"}
                   height={"50px"}

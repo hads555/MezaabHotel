@@ -1,33 +1,22 @@
 import React from "react";
 import SideBarLogo from "../assets/images/TcLogo.png";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
-import dashboardIcon from "../assets/images/dashboardIcon.svg";
-import applicationBoard from "../assets/images/applicationBoard.svg";
-import customerManagement from "../assets/images/customerManagement.svg";
-import bankIcon from "../assets/images/bankIcon.svg";
-import departmentManagement from "../assets/images/departmentManagement.svg";
-import listIcon from "../assets/images/listIcon.svg";
-import loanIcon from "../assets/images/loanIcon.svg";
-import partnerManagement from "../assets/images/partnerManagement.svg";
-import settingIcon from "../assets/images/settingIcon.svg";
-import landingPageIcon from "../assets/images/landingPageIcon.svg";
-import logsIcon from "../assets/images/logsIcon.svg";
-import sheildCheckIcon from "../assets/images/shieldCheckIcon.svg";
+import { Images } from "../Config/Images";
 
 const DasbhboardSidebar = () => {
   const sidebarItems = [
-    { label: "Dashboard", img: dashboardIcon },
-    { label: "Compilance Dashboard", img: dashboardIcon },
-    { label: "Application Board", img: applicationBoard },
+    { label: "Dashboard", img: Images.dashboardIcon },
+    { label: "Compilance Dashboard", img: Images.dashboardIcon },
+    { label: "Application Board", img: Images.applicationBoard },
     {
       label: "Customer Management",
       menu: [{ subMenu: "Leads" }, { subMenu: "CustomerList" }],
-      img: customerManagement,
+      img: Images.customerManagement,
     },
-    { label: "Product Management", img: bankIcon },
+    { label: "Product Management", img: Images.bankIcon },
     {
       label: "Department Management",
-      img: departmentManagement,
+      img: Images.departmentManagement,
       menu: [{ subMenu: "Departments" }, { subMenu: "Departments permission" }],
     },
     {
@@ -36,7 +25,7 @@ const DasbhboardSidebar = () => {
         { subMenu: "Source of Revenue" },
         { subMenu: "Departments permission" },
       ],
-      img: listIcon,
+      img: Images.listIcon,
     },
     {
       label: "Financing Management",
@@ -44,7 +33,7 @@ const DasbhboardSidebar = () => {
         { subMenu: "Source of Revenue" },
         { subMenu: "Departments permission" },
       ],
-      img: loanIcon,
+      img: Images.loanIcon,
     },
     {
       label: "Partner Management",
@@ -52,7 +41,7 @@ const DasbhboardSidebar = () => {
         { subMenu: "Source of Revenue" },
         { subMenu: "Departments permission" },
       ],
-      img: partnerManagement,
+      img: Images.partnerManagement,
     },
     {
       label: "Settings",
@@ -60,17 +49,17 @@ const DasbhboardSidebar = () => {
         { subMenu: "Source of Revenue" },
         { subMenu: "Departments permission" },
       ],
-      img: settingIcon,
+      img: Images.settingIcon,
     },
-    { label: "Home Page Management", img: landingPageIcon },
-    { label: "Landing Page Management", img: landingPageIcon },
+    { label: "Home Page Management", img: Images.landingPageIcon },
+    { label: "Landing Page Management", img: Images.landingPageIcon },
     {
       label: "System Logs",
       menu: [
         { subMenu: "Source of Revenue" },
         { subMenu: "Departments permission" },
       ],
-      img: logsIcon,
+      img: Images.logsIcon,
     },
     {
       label: "API Management",
@@ -78,7 +67,7 @@ const DasbhboardSidebar = () => {
         { subMenu: "Source of Revenue" },
         { subMenu: "Departments permission" },
       ],
-      img: sheildCheckIcon,
+      img: Images.sheildCheckIcon,
     },
   ];
   const renderSubmenu = (item: any) => (
@@ -98,9 +87,9 @@ const DasbhboardSidebar = () => {
   );
   return (
     <>
-      <Sidebar className="col-12 sidebar-wrapper fw-bold">
+      <Sidebar width="275px" className="col-12 sidebar-wrapper fw-bold">
         <div className="d-flex justify-content-center p-1 pt-4">
-          <img src={SideBarLogo} alt="" />
+          <img src={Images.sidebarLogo} alt="" />
         </div>
         <Menu>
           {sidebarItems.map((item, index) => (
@@ -112,6 +101,7 @@ const DasbhboardSidebar = () => {
                   <div className="menu-items">
                     {" "}
                     <MenuItem
+                      active={item.label === "Dashboard"}
                       prefix={
                         <img src={item.img} style={{ background: "none" }} />
                       }
