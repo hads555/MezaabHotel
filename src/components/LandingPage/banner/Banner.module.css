@@ -1,0 +1,59 @@
+.bannerWrapper{
+    background-image: url('../../assets//images/banner.png');
+  background-size: cover; 
+  background-position: center; 
+  width: 100%;
+  padding-top: 149px;
+  padding-bottom: 149px;
+}
+
+.mainHeading{
+font-weight: 700;
+line-height: 83.6px;
+color: var(--white-color);
+padding-bottom: 20px;
+}
+.subText{
+font-size: 20px;
+font-weight: 400;
+line-height: 28px;
+color: var(--white-color);
+max-width: 531px;
+}
+
+.CustomButton{
+    background-color: var(--primary-btn-color);
+    border: none;
+    padding: 20px;
+    border-radius: 12px;
+    font-size: var(--font-size-p);
+    color: #FFFFFF;
+    font-weight: 500;
+    line-height: 16px;
+    margin-top: 40px;
+}
+
+.formLogin{
+    width: 426px;
+    /* height: 402px; */
+    background: #FFF;
+    margin-left: 90px;
+    border: 1px solid #D9D9D9;
+    border-radius: 24px;
+    padding: 32px;
+}
+.forgetText{
+font-size: 14px;
+font-weight: 400;
+line-height: 14px;
+text-align: right;
+padding-top: 8px;
+display: block;
+color: #2A3F95;
+}
+.topText{
+font-size: var(--font-size-p);
+font-weight: 600;
+line-height: 16px;
+text-align: center;
+}

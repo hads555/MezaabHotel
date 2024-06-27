@@ -1,0 +1,43 @@
+.mainWrapper {
+    background: var(--white-color);
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+
+.DestinationWrapper .mainText {
+    font-weight: 600;
+    line-height: 28.13px;
+    color: var(--text-black);
+    padding-bottom: 4;
+}
+
+.DestinationWrapper .subText {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18.75px;
+    color: var(--text-black);
+}
+
+.contentBox {
+    position: relative;
+}
+.contentBox .imgDetails{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+ h3 {
+    font-weight: 600;
+    line-height: 24px;
+    color: var(--white-color);
+    margin-bottom: 8px;
+}
+
+.contentBox .imgDetails p {
+    font-weight: 600;
+    line-height: 16px;
+    color: var(--white-color);
+    margin-bottom: 0;
+}

@@ -1,0 +1,30 @@
+.sectionWrapper{
+    background-color: var(--bg-color);
+    padding-top: 89px;
+    padding-bottom: 89px;
+
+}
+
+.formWrapper{
+    max-width: 874px;
+    margin: 0  auto;
+}
+.formWrapper .topHeading{
+font-weight: 600;
+line-height: 37.5px;
+text-align: center;
+margin-bottom: 40px;
+
+}
+
+.CustomButton{
+    background-color: var(--text-blue);
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: var(--font-size-p);
+    color: #FFFFFF;
+    font-weight: 600;
+    line-height: 16px;
+    margin-top: 40px;
+}

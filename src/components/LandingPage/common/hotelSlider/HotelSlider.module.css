@@ -1,0 +1,29 @@
+/* MySlider.module.css */
+.sliderWrapper {
+   overflow-x: hidden;
+  }
+  .slideCustom{
+    width: 195px !important;
+    height: 165px;
+    background: #ffffff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* .slide {
+    background: #ccc;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+  } */
+  
+  /* .slick-slide {
+    margin: 0 10px;
+  } */
+  
+  /* .slick-prev:before,
+  .slick-next:before {
+    color: black; 
+  } */
+  

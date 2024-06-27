@@ -1,0 +1,52 @@
+.testimonialSection {
+    height: 584px;
+    padding-top: 80px;
+    padding-bottom: 70px;
+    background: var(--body-bg-color);
+}
+
+
+.testHeading {
+    font-weight: 600;
+    line-height: 37px;
+    text-align: center;
+    color: #000;
+}
+
+.customSlider {
+    max-width: 350px;
+}
+.customSlider .slideHeading {
+    font-weight: 600;
+    line-height: 24px;
+    color: #1F1A17;
+}
+
+.customSlider .addresText {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.41px;
+    text-align: left;
+    color: #1F1A17;
+    margin-bottom: 24px;
+}
+
+.customSlider .reviewText {
+    font-size: 14px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22.4px;
+    color: #1F1A17;
+    margin-bottom: 50px;
+
+}
+
+.googleReview{
+
+font-size: 12px;
+font-weight: 400;
+line-height: 14.06px;
+color: #000;
+margin-bottom: 0;
+padding-top: 8px;
+}

@@ -1,0 +1,19 @@
+
+.navLink{
+font-size: var(--font-size-p);
+font-weight: 500;
+line-height: 18.75px;
+padding: 10px 15px;
+}
+
+
+.CustomButton{
+    background-color: var(--primary-btn-color);
+    border: none;
+    padding: 20px;
+    border-radius: 12px;
+    font-size: var(--font-size-p);
+    color: #FFFFFF;
+    margin-left: 10px;
+    line-height: 16px;
+}

@@ -1,0 +1,84 @@
+.footerSection {
+    background: #F3F7FE;
+}
+
+.topFooter {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.topFooter .contactBox .mianText {
+    padding-top: 36px;
+    font-weight: 400;
+    line-height: 18.75px;
+    text-align: left;
+    color: #000000;
+    margin-bottom: 40px;
+}
+
+.aboutWrapper .mainHeading {
+    font-weight: 600;
+    line-height: 23.44px;
+    margin-bottom: 26px;
+}
+.numberDetails {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    
+}
+.numberDetails .numberText{
+    font-weight: 400;
+    line-height: 16px;
+    margin-bottom: 0;  
+    color: #000000;  
+}
+.numberDetails .contactIcon{
+width: 24px;
+height: 24px;
+border-radius: 50%;
+background: var(--text-blue);
+color: #fff;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-right: 9px;
+}
+.aboutWrapper .footerLinksList .linkItems {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18.75px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.aboutWrapper .footerLinksList .footerLink {
+    padding: 6px 0;
+}
+
+
+.copyRightSection {
+    background: var(--text-blue);
+    padding-top: 24px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.socialLinks .Links {
+    padding-left: 6px;
+    padding-right: 6px;
+    width: 24px;
+    height: 24px;
+}
+
+.copyText {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.41px;
+    color: #F6F6F6;
+    padding-top: 16px;
+}
+
+.copyText .spanText {
+    font-weight: 600;
+}
