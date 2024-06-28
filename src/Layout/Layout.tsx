@@ -4,6 +4,8 @@ import { Outlet } from "react-router-dom";
 import DasbhboardHeader from "../components/DashboardHeader/Header";
 import SubHeader from "../components/DashboardHeader/SubHeader";
 import DasbhboardSideBar from "../components/DashboardSideBar/DashboardSideBar";
+import AuthProvider from "./AuthProvider";
+import AuthCheck from "./AuthCheck";
 
 import Loader from "../components/Loader/Loader";
 import { RootState } from "../redux/rootReducer";
@@ -27,10 +29,11 @@ const Layout = () => {
   }, []);
 
   return (
-    <>
+    <AuthProvider>
       {/* {loading ? (
         <Loader />
       ) : ( */}
+      <AuthCheck></AuthCheck>
       <div className={`flex ${isMobile ? "sidebar-mobile" : "side-bar"}`}>
         <div
           className={`flex ${isMobile ? "" : "colOne"}`}
@@ -52,7 +55,7 @@ const Layout = () => {
         </div>
       </div>
       {/* )} */}
-    </>
+    </AuthProvider>
   );
 };
 export default Layout;

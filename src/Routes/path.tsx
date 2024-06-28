@@ -33,7 +33,11 @@ import LandingLayout from "../Layout/LandingLayout";
 import ManagementUser from "../pages/Management/ManagementUser";
 import AddGroupFlight from "../pages/GroupFlights/AddGroupFlight";
 import FlightDetails from "../pages/GroupFlights/FlightDetails";
+import NewAgent from "../pages/Agents/NewAgent";
 
+import AddRoom from "../components/AddRoom";
+import AddPrice from "../components/AddPrice";
+import PropertyDetails from "../components/PropertyDetails";
 export const router = createBrowserRouter([
   // {
   //   path: "",
@@ -103,6 +107,18 @@ export const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
+        path: "addroom/:id",
+        element: <AddRoom />,
+      },
+      {
+        path: "propertydetail/:id",
+        element: <PropertyDetails />,
+      },
+      {
+        path: "addprice/:id",
+        element: <AddPrice />,
+      },
+      {
         path: "addflights",
         element: <AddFlights />,
       },
@@ -145,6 +161,10 @@ export const router = createBrowserRouter([
       {
         path: "suppliers",
         element: <Suppliers />,
+      },
+      {
+        path: "addcompany",
+        element: <NewAgent/>,
       },
       {
         path: "user",

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 
 import TableView from "../../components/TableView/TableView";
@@ -11,12 +12,13 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { Select } from "antd";
 import toast from "react-hot-toast";
-import { createUser } from "./ManagemnetCrud";
+import { createUser , listUser } from "./ManagemnetCrud";
 
 const ManagementUser = () => {
   const [create, setCreate] = useState(false);
   const [update, setUpdate] = useState(false);
   const [allPushNotificaions, setAllPushNotificaions] = useState<any>("");
+  const [allCompany, setAllCompany] = useState<any>("");
   const [messgaeContent, setMessgaeContent] = useState<any>("");
   const [messgaeContentArabic, setMessgaeContentArabic] = useState<any>("");
   const [initialUpdateData, setInitialUpdateData] = useState<any>("");
@@ -63,78 +65,67 @@ const ManagementUser = () => {
 //       setSearchValue("");
 //     }
 //   };
-//   useEffect(() => {
-//     {
-//       !searchValue && allPushInfo();
-//     }
-
-//     {
-//       searchValue && onSearchHandle();
-//     }
-//   }, [searchValue]);
+  useEffect(() => {
+   allPushInfo();
+   allCompanynfo();
+  }, []);
   const handleToggleChange = (index: any, e: any) => {
     setShowPopup(true);
     setChangeStatusData(e);
   };
+  const allPushInfo = () => {
+    listUser()
+      .then((response) => {
+        console.log(response.data.data.results, "resposne");
+        setAllPushNotificaions(response?.data?.data?.results);
+        console.log(allPushNotificaions, "allPushNotificaions");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const allCompanynfo = () => {
+    listUser()
+      .then((response) => {
+        console.log(response, "resposne12");
+        setAllCompany(response?.data?.data?.results);
+  
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const Header = [
+    
     {
-      name: "Template Name",
-      selector: (row: { templateName: any }) => row.templateName,
+      name: "User Name",
+      selector: (row: { userName: any }) => row.userName,
+      
     },
     {
-      name: "Receiver",
-      selector: (row: { receiver: any }) => row.receiver,
+      name: "Created",
+      selector: (row: { createdAt: any }) => row.createdAt,
+    },
+    
+    {
+      name: "Email",
+      selector: (row: { email: any }) => row.email,
+      
     },
     {
-      name: "Content",
-      selector: (row: { content: any }) => row.content,
-      cell: (row: any, index: any) => (
-        <div dangerouslySetInnerHTML={{ __html: row.content }} />
-      ),
+      name: "Mobile No",
+      selector: (row: { mobileNo: any }) => row.mobileNo,
+      
     },
+
     {
       name: "Status",
-      selector: (row: { action: any }) => row.action.status,
-      cell: (row: any, index: any) => (
-        <div>
-          <Switch
-            onChange={(e: any) => handleToggleChange(index, row)}
-            checked={row.action.status ? row.action.status : false}
-            checkedIcon={false}
-            uncheckedIcon={false}
-            onColor="#004D72" // Adjust the color when the switch is on
-            offColor="#ccc" // Adjust the color when the switch is off
-            height={20} // Adjust the height of the switch
-            boxShadow="#fff"
-          />
-        </div>
-      ),
+      selector: (row: { status: any }) => row.status,
+     
     },
     {
-      name: "Action",
-      selector: (row: { action: any }) => row.action,
-      cell: (row: any) => (
-        <>
-          <div className="d-flex">
-            <div
-              style={{
-                padding: ".25rem 0.5rem",
-                borderRadius: "4px",
-                backgroundColor: "#4253a1",
-                color: "white",
-                marginRight: "4px",
-              }}
-              onClick={() => {
-                setInitialUpdateData(row?.action);
-                setUpdate(true);
-                console.log(row, "row");
-              }}
-            >
-              Update
-            </div>
-          </div>
-        </>
-      ),
+      name: "Roll",
+      selector: (row: { role: any }) => row.role,
     },
   ];
   //   const mappedData = allPushNotificaions.map((item:any) => ({
@@ -145,28 +136,33 @@ const ManagementUser = () => {
 
   //   }));
 
-//   const mappedData =
-//     allPushNotificaions &&
-//     allPushNotificaions.map((item: any) => {
-//       let contentHTML;
-//       // Assuming you have some condition to determine the status dynamically from API data
-//       if (item.message) {
-//         contentHTML = item.message;
-//       } else {
-//         contentHTML = "-";
-//       }
-//       return {
-//         templateName: item.templateName ? item.templateName : "-",
-//         receiver: item.receiver ? item.receiver : "-",
-//         content: contentHTML,
-//         status: item,
-//         action: item,
-//       };
-//     });
+  const mappedData =
+  allPushNotificaions &&
+  allPushNotificaions?.map((item: any) => {
+      let contentHTML;
+      // Assuming you have some condition to determine the status dynamically from API data
+      if (item.message) {
+        contentHTML = item.message;
+      } else {
+        contentHTML = "-";
+      }
+      return {
+        id:item.id ? item.id : "-",
+        createdAt: item.createdAt ? item.createdAt : "-",
+        userName: item.userName ? item.userName : "-",
+        fullName: item.fullName ? item.fullName : "-",
+        email: item.email ? item.email : "-",
+        profileImage: item.profileImage ? item.profileImage : "-",
+        mobileNo: item.mobileNo ? item.mobileNo : "-",
+        lastAccessedAt: item.lastAccessedAt ? item.lastAccessedAt : "-",
+        status: item.status?"true":"false",
+        role: item.role ? item.role : "-",
+      };
+    });
   const handleSubmitButton = async (formField: any) => {
-    formField.templateCode = "Test";
-    formField.message = messgaeContent;
-    formField.messageArabic = messgaeContentArabic;
+    formField.companyId = update;
+    formField.roleId = "12";
+    formField.companyId="96ff26fa-470a-4291-94d4-ce8b1532d36d";
     console.log(formField, "formInfo");
     try {
       let response = await createUser(formField);
@@ -227,25 +223,10 @@ const ManagementUser = () => {
   };
 
   const CategoryData: any = {
-    Manual: "1",
-    Automatic: "2",
-    1: "1",
-    2: "2",
-    3: "1",
-    4: "2",
-    5: "1",
-    6: "2",
-    7: "1",
-    8: "2",
-    9: "1",
-    10: "2",
-    11: "1",
-    12: "2",
-    13: "1",
-    14: "2",
-    15: "1",
-    16: "2",
-    17: "1",
+    true: "true",
+    false: "false",
+
+
   };
   const transmissionCategoryData: any = [];
   for (const key in CategoryData) {
@@ -263,6 +244,9 @@ const ManagementUser = () => {
       },
     },
   ];
+  const handleSelectChange = (value: any, name: any) => {
+setUpdate(value)  };
+console.log(allCompany,"12")
   return (
     <>
       <div className="cs-table">
@@ -272,7 +256,7 @@ const ManagementUser = () => {
           setSearchValue={setSearchValue}
           searchValue={searchValue}
         />
-        <TableView header={Header} />
+        <TableView header={Header} data={mappedData}  />
         <Modal show={create} onHide={() => setCreate(false)} size="xl">
           <Modal.Header closeButton>
             <Modal.Title>Add User</Modal.Title>
@@ -474,11 +458,28 @@ const ManagementUser = () => {
                         <Field
                           className="form-control col-6"
                           type="text"
-                          placeholder="company Id "
-                          name="companyId"
-                          id="companyId"
+                          value="96ff26fa-470a-4291-94d4-ce8b1532d36d"
+                          placeholder="Enter username"
+                          name="company"
+                          id="company"
+                          readOnly
                           autoComplete="off"
+                          onChange={(e: any) =>
+                            setFieldValue("company", e.target.value)
+                          }
                         />
+                        {/* <Select
+                  style={{ width: "90%" }}
+                  onChange={(value) => handleSelectChange(value,"")}
+                >
+                  {allCompany &&
+                    allCompany.map((item: any, index: any) => (
+                      <Select.Option value={item.id}>
+                        {item?.fullName}
+                      </Select.Option>
+                    ))}
+                </Select> */}
+
 
                         <ErrorMessage
                           name="companyId"

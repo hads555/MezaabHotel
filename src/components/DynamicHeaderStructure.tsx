@@ -12,7 +12,7 @@ function DynamicHeaderStructure({
   status,
   partner,
   filter,
-button,
+  button,
   searchPlaceHolder,
   setSearchValue,
   searchValue,
@@ -74,8 +74,8 @@ button,
 
                       <Dropdown.Menu>
                         {parentStatus &&
-                          parentStatus.map((item: any) => (
-                            <Dropdown.Item>
+                          parentStatus.map((item: any, index: any) => (
+                            <Dropdown.Item key={index}>
                               <>
                                 <div className="d-flex">
                                   <div className="col-3">
@@ -102,8 +102,8 @@ button,
 
                       <Dropdown.Menu>
                         {status &&
-                          status.map((item: any) => (
-                            <Dropdown.Item>
+                          status.map((item: any, index: any) => (
+                            <Dropdown.Item key={index}>
                               <>
                                 <div className="d-flex">
                                   <div className="col-3"></div>
@@ -124,8 +124,8 @@ button,
                   </label>
                   <Select style={{ width: "130px" }}>
                     {partner &&
-                      partner.map((item: any) => (
-                        <option value="1">{item.label}</option>
+                      partner.map((item: any, index: any) => (
+                        <option key={index} value="1">{item.label}</option>
                       ))}
                   </Select>
                 </div>
@@ -165,7 +165,7 @@ button,
                   <div className="search-bar">
                     <input
                       type="search"
-                      placeholder={searchPlaceHolder}
+                      placeholder={(searchPlaceHolder && searchPlaceHolder !== true) ? searchPlaceHolder : "..."}
                       className="search-icon form-control search-bar"
                       value={searchValue}
                       onChange={handleChange}
@@ -180,10 +180,10 @@ button,
                 </div>
               )}
               {button &&
-                button.map((item: any) => (
+                button.map((item: any, index: any) => (
                   <div
                     className="theme-btn mt-1 button-margin  d-flex justify-content-center"
-                   
+                    key={index}
                     onClick={item.onClick}
                   >
                   

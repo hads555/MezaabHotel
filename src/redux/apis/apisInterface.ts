@@ -2,6 +2,7 @@ export interface ApisState {
   isError: boolean;
   isSuccess: boolean;
   isLoading: boolean;
+  user: any;
   message: string;
   theme: any;
   dashboardStructure: any;

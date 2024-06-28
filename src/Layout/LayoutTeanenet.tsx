@@ -12,6 +12,7 @@ import Footer from "../components/Footer";
 
 import Loader from "../components/Loader/Loader";
 import { RootState } from "../redux/rootReducer";
+import NoAuthCheck from "./NoAuthCheck";
 
 const LayoutTeanenett = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -36,6 +37,7 @@ const LayoutTeanenett = () => {
       {/* {loading ? (
         <Loader />
       ) : ( */}
+      <NoAuthCheck />
       <div className="col-md-12">
         <Outlet />
       </div>
