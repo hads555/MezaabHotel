@@ -31,6 +31,7 @@ import StaffLists from "../pages/Staff/StaffLists";
 import LocationCities from "../pages/Locations/LocationCities";
 import LandingLayout from "../Layout/LandingLayout";
 import ManagementUser from "../pages/Management/ManagementUser";
+import NewAgent from "../pages/Agents/NewAgent";
 
 export const router = createBrowserRouter([
   // {
@@ -138,6 +139,10 @@ export const router = createBrowserRouter([
       {
         path: "suppliers",
         element: <Suppliers/>,
+      },
+      {
+        path: "addcompany",
+        element: <NewAgent/>,
       },
       {
         path: "user",
