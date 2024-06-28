@@ -31,6 +31,8 @@ import StaffLists from "../pages/Staff/StaffLists";
 import LocationCities from "../pages/Locations/LocationCities";
 import LandingLayout from "../Layout/LandingLayout";
 import ManagementUser from "../pages/Management/ManagementUser";
+import AddGroupFlight from "../pages/GroupFlights/AddGroupFlight";
+import FlightDetails from "../pages/GroupFlights/FlightDetails";
 
 export const router = createBrowserRouter([
   // {
@@ -79,22 +81,19 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <LandingLayout />,
-    
   },
   {
-       path: "/",
-       element: <LayoutTeanenet />,
-       children: [
-         
-         {
-           path: "login",
-           element: <Login />,
-         },
-         { path: "*", element: <NotFound /> },
-         
-       ],
-     },
-    
+    path: "/",
+    element: <LayoutTeanenet />,
+    children: [
+      {
+        path: "login",
+        element: <Login />,
+      },
+      { path: "*", element: <NotFound /> },
+    ],
+  },
+
   {
     path: "",
     element: <Layout />,
@@ -106,6 +105,14 @@ export const router = createBrowserRouter([
       {
         path: "addflights",
         element: <AddFlights />,
+      },
+      {
+        path: "addindividualFlight/:id",
+        element: <AddGroupFlight />,
+      },
+      {
+        path: "flightdetails/:id",
+        element: <FlightDetails />,
       },
       {
         path: "allgroups",
@@ -129,51 +136,51 @@ export const router = createBrowserRouter([
       },
       {
         path: "addcountry",
-        element: <AddCountry/>,
+        element: <AddCountry />,
       },
       {
         path: "addcity",
-        element: <AddCity/>,
+        element: <AddCity />,
       },
       {
         path: "suppliers",
-        element: <Suppliers/>,
+        element: <Suppliers />,
       },
       {
         path: "user",
-        element: <ManagementUser/>,
+        element: <ManagementUser />,
       },
       {
         path: "addsuppliers",
-        element: <AddSupplier/>,
+        element: <AddSupplier />,
       },
       {
         path: "addsuppliers",
-        element: <AddSupplier/>,
+        element: <AddSupplier />,
       },
       {
         path: "staff",
-        element: <StaffLists/>,
+        element: <StaffLists />,
       },
       {
         path: "accesscontrol",
-        element: <StaffLists/>,
+        element: <StaffLists />,
       },
       {
         path: "locationcountries",
-        element: <LocationCountries/>,
+        element: <LocationCountries />,
       },
       {
         path: "locationcities",
-        element: <LocationCities/>,
+        element: <LocationCities />,
       },
       {
         path: "addcountry",
-        element: <AddCountry/>,
+        element: <AddCountry />,
       },
       {
         path: "addcity",
-        element: <AddCity/>,
+        element: <AddCity />,
       },
       {
         path: "FieldInvestigation",
@@ -191,7 +198,7 @@ export const router = createBrowserRouter([
         path: "CustomerInformation",
         element: <Departments />,
       },
-   
+
       { path: "*", element: <NotFound /> },
     ],
   },
