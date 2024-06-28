@@ -33,6 +33,9 @@ import LandingLayout from "../Layout/LandingLayout";
 import ManagementUser from "../pages/Management/ManagementUser";
 import NewAgent from "../pages/Agents/NewAgent";
 
+import AddRoom from "../components/AddRoom";
+import AddPrice from "../components/AddPrice";
+import PropertyDetails from "../components/PropertyDetails";
 export const router = createBrowserRouter([
   // {
   //   path: "",
@@ -103,6 +106,18 @@ export const router = createBrowserRouter([
       {
         path: "dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "addroom/:id",
+        element: <AddRoom />,
+      },
+      {
+        path: "propertydetail/:id",
+        element: <PropertyDetails />,
+      },
+      {
+        path: "addprice/:id",
+        element: <AddPrice />,
       },
       {
         path: "addflights",

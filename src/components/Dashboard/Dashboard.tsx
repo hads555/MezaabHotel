@@ -9,7 +9,6 @@ import { useSelector } from "react-redux";
 import DynamicHeaderStructure from "../DynamicHeaderStructure";
 import Loader from "../Loader/Loader";
 import { Images } from "../Config/Images";
-import ApexCharts from 'apexcharts'
 
 
 function Dashboard() {
