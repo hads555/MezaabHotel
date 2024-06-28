@@ -119,11 +119,11 @@ function Dashboard() {
     bg: string;
   }
   const stats: Stat[] = [
-    { category: "Total Agents", value: totalAgents, change: "1230", imgSrc: Images.arrowUp, bg: "#6DB96C" },
-    { category: "Total Properties", value: totalHotels, change: "330", imgSrc: Images.arrowUp, bg: "#6DB96C" },
-    { category: "Revenue", value: 120, change: "340", imgSrc: Images.arrowUp, bg: "#6DB96C" },
-    { category: "Growth", value: 120, change: "1230", imgSrc: Images.downArrow, bg: "#FD7A02" },
-    { category: "Conversation", value: 120, change: "450", imgSrc: Images.arrowUp, bg: "#6DB96C" },
+    { category: "Total Agents", value: totalAgents, change: "4", imgSrc: Images.arrowUp, bg: "#6DB96C" },
+    { category: "Total Properties", value: totalHotels, change: "1", imgSrc: Images.arrowUp, bg: "#6DB96C" },
+    { category: "Revenue", value: 10, change: "10", imgSrc: Images.arrowUp, bg: "#6DB96C" },
+    { category: "Growth", value: 5, change: "5", imgSrc: Images.downArrow, bg: "#FD7A02" },
+    { category: "Conversation", value: 8, change: "5", imgSrc: Images.arrowUp, bg: "#6DB96C" },
 
   ];
   const button = [{
