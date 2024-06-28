@@ -15,7 +15,14 @@ import { Modal } from "react-bootstrap";
 import axios from "axios";
 import OtpInput from "./Otp";
 
+import { redirect } from "react-router-dom";
+
 const Login = () => {
+  const dispatch = useDispatch();
+  // const userData = useSelector(
+  //   (state: RootState) => state.block.user
+  // );
+
   const [isForgotPassword, setIsForgotPassword] = useState(false);
   const navigate = useNavigate();
   const [change, setChange] = useState<any>();
@@ -23,7 +30,6 @@ const Login = () => {
   const [userEmail, setUserEmail] = useState("");
   const [loader, setLoader] = useState(false);
   const themeBuilder = useSelector((state: RootState) => state.block.theme);
-  const dispatch = useDispatch();
   const [otp, setOtp] = useState("");
   const [otpDialog, setOtpDialog] = useState(false);
   const [message, setMessage] = useState("");
@@ -95,6 +101,7 @@ const Login = () => {
     setPassword(formField.password);
     setLoader(true);
     formField.ip=ip;
+    console.log(formField);
     try {
       const headers = {
         "Content-Type": "application/json",
@@ -105,9 +112,23 @@ const Login = () => {
         { headers: headers }
       );
       if (response) {
-        console.log(response, "response");
-        toast.success(response?.data?.message);
+        let userData = {
+          authToken: response?.data?.data?.authToken || null,
+          email: response?.data?.data?.email || null,
+          fullName: response?.data?.data?.fullName || null,
+          id: response?.data?.data?.id || null,
+          profileImage: response?.data?.data?.profileImage || null,
+          profileImageUrl: response?.data?.data?.profileImageUrl || null,
+          requiresPasswordChange: response?.data?.data?.requiresPasswordChange || null,
+          role: response?.data?.data?.role || null
+        }
+        console.log(userData);
+        toast.success(response?.statusText);
         setOtpDialog(true);
+        
+        dispatch(authSlice.actions.setUser(userData));
+        window.location.href = "/dashboard";
+
         setLoader(false);
       } else {
         setLoader(false);

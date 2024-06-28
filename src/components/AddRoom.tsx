@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Input, Select, DatePicker } from "antd";
-import DynamicHeaderStructure from "../../components/DynamicHeaderStructure";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import {
   allHotels,
   postAddressUrl,
   postPropertUrl,
-} from "../../redux/apis/apisCrud";
-import { Navigate, useNavigate } from "react-router-dom";
+  postRoomUrl,
+} from "../redux/apis/apisCrud";
+import DynamicHeaderStructure from "./DynamicHeaderStructure";
 import toast from "react-hot-toast";
 
 const button = [{ title: "Save Property" }];
@@ -17,17 +18,20 @@ const images = [
   "https://via.placeholder.com/203",
 ];
 
-const FieldInvestigation = () => {
+const AddRoom = () => {
   const navigate = useNavigate();
   const [allPushNotificaions, setAllPushNotificaions] = useState<any>("");
+  const id = useParams();
   const [formData, setFormData] = useState({
     title: "",
     discription: "",
-    contactNumber: "",
-    email: "",
-    hotelRoomCapicty: "",
-    address: "",
-    userId: "1234",
+    guestRange: "",
+    roomSize: "",
+    smoking: "",
+    hotel: "",
+    availableFrom: "",
+    availableUntil: "",
+    createdBy: "1",
   });
   const [formDataAddress, setFormDataAddress] = useState({
     addressLine1: "",
@@ -46,10 +50,10 @@ const FieldInvestigation = () => {
   const handleSelectChange = (value: any, name: any) => {
     setFormData({ ...formData, [name]: value });
   };
-  const addHotel = async (id: any) => {
-    formData.address = `${id}`;
+  const addRoom = async () => {
+    // formData.address = `${id}`;
     try {
-      const response = await fetch(postPropertUrl, {
+      const response = await fetch(postRoomUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -58,9 +62,10 @@ const FieldInvestigation = () => {
       });
       const result = await response.json();
       if (result) {
-        navigate(`/addroom/${result.data.id}`);
+        navigate(`/addprice/${result.data.id}`);
         toast.success("Successfully Added");
       }
+
       console.log("Success:", result);
       // Handle success (e.g., show notification, redirect)
     } catch (error) {
@@ -68,26 +73,7 @@ const FieldInvestigation = () => {
       // Handle error (e.g., show notification)
     }
   };
-  const handleSubmit = async () => {
-    try {
-      const response = await fetch(postAddressUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formDataAddress),
-      });
-      const result = await response.json();
-      if (result) {
-        addHotel(result?.data?.id);
-      }
-      console.log("Success:", result);
-      // Handle success (e.g., show notification, redirect)
-    } catch (error) {
-      console.error("Error:", error);
-      // Handle error (e.g., show notification)
-    }
-  };
+
   const allPushInfo = () => {
     allHotels()
       .then((response: any) => {
@@ -105,9 +91,7 @@ const FieldInvestigation = () => {
   return (
     <>
       <div className="cs-table p-2">
-        <DynamicHeaderStructure title={"Add Property"} />
-        <br />
-        <DynamicHeaderStructure title={"1. Property Details"} />
+        <DynamicHeaderStructure title={"Add Room"} />
         <div className="row">
           <div className="col-md-8 pt-3">
             <div className="row">
@@ -132,87 +116,93 @@ const FieldInvestigation = () => {
                 />
               </div>
               <div className="col-md-6 pt-3">
-                <div className="simple-text">Contact Number</div>
+                <div className="simple-text">Guest Range</div>
                 <Input
                   type="text"
-                  name="contactNumber"
-                  value={formData.contactNumber}
+                  name="guestRange"
+                  value={formData.guestRange}
                   onChange={handleInputChange}
                   style={{ width: "90%" }}
                 />
               </div>
               <div className="col-md-6 pt-3">
-                <div className="simple-text">Email</div>
+                <div className="simple-text">Room Size</div>
                 <Input
-                  name="email"
-                  value={formData.email}
+                  name="roomSize"
+                  value={formData.roomSize}
                   onChange={handleInputChange}
                   style={{ width: "90%" }}
                 />
               </div>
               <div className="col-md-6 pt-3">
-                <div className="simple-text">Hotel Room Capacity</div>
-                <Input
-                  type="text"
-                  name="hotelRoomCapicty"
-                  value={formData.hotelRoomCapicty}
-                  onChange={handleInputChange}
+                <div className="simple-text">smoking</div>
+                <Select
                   style={{ width: "90%" }}
-                />
+                  onChange={(value) =>
+                    handleSelectChange(value === "true", "smoking")
+                  }
+                >
+                  <Select.Option value="true">True</Select.Option>
+                  <Select.Option value="false">False</Select.Option>
+                </Select>
               </div>
               <div className="col-md-6 pt-3">
-                <div className="simple-text">Address</div>
-                <Input
-                  type="text"
-                  name="addressLine1"
-                  value={formDataAddress.addressLine1}
-                  onChange={handleInputChangeAddress}
+                <div className="simple-text">Room Type</div>
+                <Select
                   style={{ width: "90%" }}
-                />
+                  onChange={(value) => handleSelectChange(value, "roomType")}
+                >
+                  <Select.Option value="standard">Standard</Select.Option>
+                  <Select.Option value="delux">Delux</Select.Option>
+                  <Select.Option value="executive">Executive</Select.Option>
+                </Select>
+              </div>
+              <div className="col-md-6 pt-3">
+                <div className="simple-text">Hotel</div>
 
-                {/* <Select
+                <Select
                   style={{ width: "90%" }}
-                  onChange={(value) => handleSelectChange(value, "address")}
+                  onChange={(value) => handleSelectChange(value, "hotel")}
                 >
                   {allPushNotificaions &&
                     allPushNotificaions.map((item: any, index: any) => (
-                      <Select.Option value={item.address.id}>
-                        {item?.address?.addressLine1}
+                      <Select.Option value={item.id}>
+                        {item?.title}
                       </Select.Option>
                     ))}
-                </Select> */}
+                </Select>
               </div>
 
               <div className="col-md-6 pt-3">
-                <div className="simple-text">Country</div>
+                <div className="simple-text">Available From</div>
                 <Input
-                  type="text"
-                  name="country"
-                  value={formDataAddress.country}
-                  onChange={handleInputChangeAddress}
+                  type="date"
+                  name="availableFrom"
+                  value={formData.availableFrom}
+                  onChange={handleInputChange}
                   style={{ width: "90%" }}
                 />
               </div>
               <div className="col-md-6 pt-3">
-                <div className="simple-text">City</div>
+                <div className="simple-text">Available Until</div>
                 <Input
-                  type="text"
-                  name="city"
-                  value={formDataAddress.city}
-                  onChange={handleInputChangeAddress}
+                  type="date"
+                  name="availableUntil"
+                  value={formData.availableUntil}
+                  onChange={handleInputChange}
                   style={{ width: "90%" }}
                 />
               </div>
-              <div className="col-md-6 pt-3">
-                <div className="simple-text">State</div>
+              {/* <div className="col-md-6 pt-3">
+                <div className="simple-text">Image Url</div>
                 <Input
-                  type="text"
+                  type="file"
                   name="state"
                   value={formDataAddress.state}
                   onChange={handleInputChangeAddress}
                   style={{ width: "90%" }}
                 />
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="col-md-4">
@@ -247,9 +237,9 @@ const FieldInvestigation = () => {
         <div className="d-flex justify-content-center mt-4">
           <div
             className="theme-btn col-3 mt-1 button-margin d-flex justify-content-center"
-            onClick={handleSubmit}
+            onClick={addRoom}
           >
-            <div className="ps-1 d-flex align-items-center">Add Property</div>
+            <div className="ps-1 d-flex align-items-center">Add Room</div>
           </div>
         </div>
       </div>
@@ -258,5 +248,4 @@ const FieldInvestigation = () => {
     </>
   );
 };
-
-export default FieldInvestigation;
+export default AddRoom;

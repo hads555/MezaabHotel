@@ -6,6 +6,7 @@ const initialState: ApisState = {
   isError: false,
   isSuccess: false,
   isLoading: false,
+  user: {},
   message: "",
   theme: {},
   dashboardStructure: {},
@@ -29,6 +30,12 @@ export const authSlice = createSlice({
     },
     setTheme: (state, action) => {
       state.theme = action.payload.theme;
+    },
+    setUser: (state, action) => {
+      console.log(action.payload)
+      state.user = action.payload;
+      localStorage.setItem('user', action.payload);
+      localStorage.setItem('authToken', JSON.stringify(action?.payload?.authToken));
     },
     setDashboardStructure: (state, action) => {
       state.dashboardStructure = action.payload.data;
@@ -69,6 +76,7 @@ export const authSlice = createSlice({
 });
 
 export const {
+  setUser,
   catchError,
   toggleSidebar,
   initiateRequest,
