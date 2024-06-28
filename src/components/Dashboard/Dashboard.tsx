@@ -10,7 +10,6 @@ import DynamicHeaderStructure from "../DynamicHeaderStructure";
 import Loader from "../Loader/Loader";
 import { Images } from "../Config/Images";
 
-
 function Dashboard() {
   const [totalAgents, setTotalAgents] = useState<any>();
   const [totalHotels, setTotalHotels] = useState<any>();
@@ -53,7 +52,6 @@ function Dashboard() {
         <div className="chart-header d-flex mobile-responsive-chart justify-content-between align-items-center">
           <h3 className="welcome-heading col-xl-3 col-12">{item.title}</h3>
           <div className="d-flex mobile-responsive-chart-filter col-xl-9 col-12 align-items-center justify-content-end">
-
             <div className="d-grid">
               <label htmlFor="" className="label-theme">
                 From
@@ -118,6 +116,54 @@ function Dashboard() {
     bg: string;
   }
   const stats: Stat[] = [
+    {
+      category: "Total Agents",
+      value: 120,
+      change: "1230",
+      imgSrc: Images.arrowUp,
+      bg: "#6DB96C",
+    },
+    {
+      category: "Total Properties",
+      value: 120,
+      change: "330",
+      imgSrc: Images.arrowUp,
+      bg: "#6DB96C",
+    },
+    {
+      category: "Revenue",
+      value: 120,
+      change: "340",
+      imgSrc: Images.arrowUp,
+      bg: "#6DB96C",
+    },
+    {
+      category: "Growth",
+      value: 120,
+      change: "1230",
+      imgSrc: Images.downArrow,
+      bg: "#FD7A02",
+    },
+    {
+      category: "Conversation",
+      value: 120,
+      change: "450",
+      imgSrc: Images.arrowUp,
+      bg: "#6DB96C",
+    },
+  ];
+  const button = [
+    {
+      title: "Search",
+    },
+  ];
+  return (
+    <div>
+      <DynamicHeaderStructure
+        title={"Overview"}
+        searchPlaceHolder={true}
+        button={button}
+      />
     { category: "Total Agents", value: totalAgents, change: "4", imgSrc: Images.arrowUp, bg: "#6DB96C" },
     { category: "Total Properties", value: totalHotels, change: "1", imgSrc: Images.arrowUp, bg: "#6DB96C" },
     { category: "Revenue", value: 10, change: "10", imgSrc: Images.arrowUp, bg: "#6DB96C" },
@@ -191,6 +237,17 @@ function Dashboard() {
             <div className="div-set animate__animated animate__fadeIn animate__slow">
               <label className="text-sm pb-4">{stat.category}</label>
               <div>
+                <p className="text-xxlg mb-2">{stat.value}</p>
+                <label className="text-sm">
+                  <span
+                    className="text-msm wColor div-bg me-1"
+                    style={{ backgroundColor: stat.bg }}
+                  >
+                    <img src={stat.imgSrc} alt="" />
+                    {stat.change}
+                  </span>
+                  Since last month
+                </label>
                 {loading ? (
                   <>
                     Loading...
@@ -212,10 +269,6 @@ function Dashboard() {
           </div>
         ))}
       </div>
-      {/* <div>
-        <div id="chart1"></div>
-        <div id="chart2"></div>
-      </div> */}
     </div>
   )
 }
