@@ -15,6 +15,7 @@ import HolyLands from "../components/LandingPage/holyLands/HolyLands";
 import HotelChains from "../components/LandingPage/hotelChain/HotelChains";
 import QueryForm from "../components/LandingPage/queryForm/QueryForm";
 import Footer from "../components/LandingPage/common/footer/Footer";
+import NoAuthCheck from "./NoAuthCheck";
 
 const LandingLayout = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -36,6 +37,7 @@ const LandingLayout = () => {
 
   return (
     <>
+      <NoAuthCheck />
       <Navbar />
       <Banner />
       <WhyChooseUs />
